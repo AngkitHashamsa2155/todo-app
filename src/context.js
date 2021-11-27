@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 
 const AppContext = React.createContext()
 
@@ -7,7 +7,8 @@ export const AppProvider = ({ children }) => {
   const [data, setData] = useState('')
   const [completed, setComplete] = useState(false)
   const [todo, setTodo] = useState([])
-  const [filterItem, setFilterItem] = useState([...todo])
+  const [filterItem, setFilterItem] = useState([])
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if (data && startDate) {
@@ -26,6 +27,9 @@ export const AppProvider = ({ children }) => {
       alert('please enter all the value')
     }
   }
+  useEffect(() => {
+    setFilterItem([...todo])
+  }, [todo])
 
   const handleFilter = (e) => {
     let value = e.target.value
@@ -38,7 +42,7 @@ export const AppProvider = ({ children }) => {
       setFilterItem(newValue)
     }
     if (value === 'incomplete') {
-      let newValue = todo.filter((item) => item.completed === true)
+      let newValue = todo.filter((item) => item.completed === false)
       setFilterItem(newValue)
     }
   }
