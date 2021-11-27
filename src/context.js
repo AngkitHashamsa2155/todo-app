@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     if (data && startDate) {
       const newTodo = {
         id: new Date().getTime().toString(),

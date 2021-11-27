@@ -2,6 +2,7 @@ import React from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useGlobalContext } from './context'
+
 const Form = () => {
   const {
     startDate,
@@ -27,15 +28,15 @@ const Form = () => {
           placeholder='Add your list'
         />
 
-        <section className='my-10 mr-auto'>
-          <label htmlFor='date' className='mr-1'>
+        <section className='my-10 flex'>
+          {/* <label htmlFor='date' className='mr-1'>
             Date:
-          </label>
+          </label> */}
           <DatePicker
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             type='date'
-            className='border-2 w-1/3 ml-0'
+            className='border-2 '
             id='date'
           />
         </section>
