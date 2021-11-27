@@ -1,3 +1,0 @@
-export const HANDLE_SUBMIT = HANDLE_SUBMIT
-export const HANDLE_FILTER = HANDLE_FILTER
-export const HANDLE_FORM = HANDLE_FORM
