@@ -23,3 +23,7 @@ export const handleFilter = (e) => {
 
   return { type: action.HANDLE_FILTER, payload: { value } };
 };
+
+export const deleteTodo = (id) => {
+  return { type: action.DELETE_TODO, payload: { id } };
+};

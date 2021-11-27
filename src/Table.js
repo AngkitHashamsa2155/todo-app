@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import moment from 'moment';
 import * as actions from './Redux/constant';
 import { useSelector, useDispatch } from 'react-redux';
+import { deleteTodo } from './Redux/createActions';
 const Table = () => {
   const data = useSelector((state) => {
     const {
@@ -22,6 +23,7 @@ const Table = () => {
             <th>Todo</th>
             <th>Date</th>
             <th>State</th>
+            <th>delete</th>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +36,14 @@ const Table = () => {
                 <td>{moment(startDate).format('MMMM d, YYYY')}</td>
                 <td className='p-3 border-2'>
                   {complete ? 'completed' : 'incomplete'}
+                </td>
+                <td>
+                  <button
+                    onClick={() => dispatch(deleteTodo(item.id))}
+                    className='text-red-600'
+                  >
+                    delete
+                  </button>
                 </td>
               </tr>
             );

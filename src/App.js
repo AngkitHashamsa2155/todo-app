@@ -14,7 +14,7 @@ function App() {
     <main className='min-h-full'>
       <div className='section-center  pt-16 text-center'>
         <Form />
-        <Filter />
+        {data.filterItem.length > 0 && <Filter />}
         <Table />
       </div>
     </main>

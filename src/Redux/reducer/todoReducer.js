@@ -62,6 +62,12 @@ const todoReducer = (state = initialState, action) => {
     const { todo } = state;
     return { ...state, filterItem: [...todo] };
   }
+  if (action.type === constant.DELETE_TODO) {
+    const { id } = action.payload;
+    let newData = state.filterItem.filter((item) => item.id !== id);
+    let newTodo = state.todo.filter((item) => item.id !== id);
+    return { ...state, filterItem: newData, todo: newTodo };
+  }
   return state;
 };
 export default todoReducer;
