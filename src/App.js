@@ -17,7 +17,6 @@ function App() {
               id='filter'
               onClick={handleFilter}
               className='bg-blue-400 text-white rounded-lg px-3 py-2 focus:outline-none'
-              id='filter'
             >
               <option value='all'>all</option>
               <option value='incomplete'>incomplete</option>

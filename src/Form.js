@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useGlobalContext } from './context'
@@ -47,10 +47,9 @@ const Form = () => {
           <input
             id='completed'
             type='checkbox'
-            className='ml-2'
             checked={completed}
             onChange={() => setComplete(!completed)}
-            className='border border-blue-400 rounded-md shadow-lg'
+            className='border border-blue-400 rounded-md shadow-lg ml-2'
           />
         </section>
 
