@@ -1,4 +1,4 @@
-import * as actions from '../constant';
+import * as constant from '../constant';
 
 const initialState = {
   formInput: '',
@@ -9,13 +9,58 @@ const initialState = {
 };
 
 const todoReducer = (state = initialState, action) => {
-  if (action.type === actions.HANDLE_FORM_INPUT) {
+  if (action.type === constant.HANDLE_FORM_INPUT) {
     const { value } = action.payload;
 
     return { ...state, formInput: value };
   }
-  if (action.type === actions.HANDLE_FORM_CHECKED) {
+  if (action.type === constant.HANDLE_FORM_CHECKED) {
     return { ...state, complete: !state.complete };
+  }
+  if (action.type === constant.HANDLE_FORM_DATE) {
+    let { date } = action.payload;
+    return { ...state, startDate: date };
+  }
+  if (action.type === constant.HANDLE_SUBMIT) {
+    const { formInput, complete, startDate, todo } = state;
+    if (formInput) {
+      let newInput = {
+        id: new Date().getTime().toString(),
+        formInput,
+        complete,
+        startDate,
+      };
+      return {
+        ...state,
+        todo: [...state.todo, newInput],
+        complete: false,
+        formInput: '',
+        complete: false,
+        startDate: new Date(),
+      };
+    } else {
+      alert('please Enter the value');
+    }
+  }
+  if (action.type === constant.HANDLE_FILTER) {
+    const { value } = action.payload;
+    const { todo } = state;
+    let tempValue = [];
+    if (value === 'all') {
+      return { ...state, filterItem: [...todo] };
+    }
+    if (value === 'incomplete') {
+      tempValue = todo.filter((item) => item.complete === false);
+      return { ...state, filterItem: tempValue };
+    }
+    if (value === 'completed') {
+      tempValue = todo.filter((item) => item.complete === true);
+      return { ...state, filterItem: tempValue };
+    }
+  }
+  if (action.type === constant.HANDLE_TABLE_DATA) {
+    const { todo } = state;
+    return { ...state, filterItem: [...todo] };
   }
   return state;
 };

@@ -2,7 +2,12 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { handleFormInput, handleFormChecked } from './Redux/createActions';
+import {
+  handleFormInput,
+  handleFormChecked,
+  handleFormDate,
+  handleSubmit,
+} from './Redux/createActions';
 const Form = () => {
   const formInputs = useSelector((state) => {
     const {
@@ -17,7 +22,10 @@ const Form = () => {
       <header className='text-center mb-2'>
         <h1 className='font-semibold text-base'>Todo App</h1>
       </header>
-      <form className='md:flex md:flex-col '>
+      <form
+        className='md:flex md:flex-col '
+        onSubmit={(e) => dispatch(handleSubmit(e))}
+      >
         <input
           type='text'
           className=' flex-1 focus:outline-none p-2 px-3 w-full  rounded-lg shadow-lg'
@@ -33,7 +41,7 @@ const Form = () => {
           </label> */}
           <DatePicker
             selected={formInputs.startDate}
-            // onChange={(date) => setStartDate(date)}
+            onChange={(e) => dispatch(handleFormDate(e))}
             type='date'
             className='border-2 '
             id='date'

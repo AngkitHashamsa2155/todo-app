@@ -1,14 +1,21 @@
 import Form from './Form';
 import Table from './Table';
 import Filter from './Filter';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const data = useSelector((state) => {
+    const {
+      todoReducer: { filterItem },
+    } = state;
+    return { filterItem };
+  });
   return (
     <main className='min-h-full'>
       <div className='section-center  pt-16 text-center'>
         <Form />
-        {/* {filterItem.length > 0 && <Filter />}
-        {filterItem.length > 0 && <Table />} */}
+        <Filter />
+        <Table />
       </div>
     </main>
   );
