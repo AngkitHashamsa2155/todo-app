@@ -10,12 +10,12 @@ function App() {
     } = state;
     return { filterItem };
   });
-  console.log(data.filterItem.length);
+
   return (
     <main className='min-h-full'>
       <div className='section-center  pt-16 text-center'>
         <Form />
-        {data.filterItem.length > 0 && <Filter />}
+        <Filter />
         <Table />
       </div>
     </main>

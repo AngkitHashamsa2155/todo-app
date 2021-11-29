@@ -27,3 +27,7 @@ export const handleFilter = (e) => {
 export const deleteTodo = (id) => {
   return { type: action.DELETE_TODO, payload: { id } };
 };
+
+export const updateTodo = (id) => {
+  return { type: action.HANDLE_UPDATE, payload: { id } };
+};

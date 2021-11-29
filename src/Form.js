@@ -11,9 +11,9 @@ import {
 const Form = () => {
   const formInputs = useSelector((state) => {
     const {
-      todoReducer: { formInput, startDate, complete },
+      todoReducer: { formInput, startDate, complete, isEdit },
     } = state;
-    return { formInput, startDate, complete };
+    return { formInput, startDate, complete, isEdit };
   });
 
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const Form = () => {
           type='submit'
           className='py-1 px-3 md:w-3/4 rounded-lg bg-blue-400 text-white w-full text-center mx-auto '
         >
-          Add
+          {formInputs.isEdit ? 'Edit' : 'Add'}
         </button>
       </form>
     </div>
